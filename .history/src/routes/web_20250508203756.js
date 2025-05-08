@@ -12,7 +12,6 @@ const router = express.Router();
 const initWebRoutes = (app) => {
   router.get("/", homeController.helloWorld);
   router.get("/user", homeController.handleUserPage);
-  router.get("/book", homeController.handleBook);
   // duong dan goc => mac dinh tu localhost:8386/....
   return app.use("/", router);
 };
