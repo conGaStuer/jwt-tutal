@@ -13,6 +13,11 @@
     <title>Document</title>
   </head>
   <body>
+    <div>
+      <% userList.forEach(function(item,index){ %>
+      <div class="abc"><%= JSON.stringify(item) %></div>
+      <% }); %>
+    </div>
     <div class="container">
       <div class="row">
         <form action="/user/create-user" method="POST">
@@ -66,17 +71,33 @@
               </tr>
             </thead>
             <tbody>
-              <% userList.forEach(function(item,index){ %>
               <tr>
-                <th scope="row"><%= index + 1 %></th>
-                <td><%= item.email %></td>
-                <td><%= item.username %></td>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
                 <td>
                   <button class="btn btn-warning">Edit</button>
                   <button class="btn btn-danger">Delete</button>
                 </td>
               </tr>
-              <% }); %>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>
+                  <button class="btn btn-warning">Edit</button>
+                  <button class="btn btn-danger">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>John</td>
+                <td>Doe</td>
+                <td>
+                  <button class="btn btn-warning">Edit</button>
+                  <button class="btn btn-danger">Delete</button>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>

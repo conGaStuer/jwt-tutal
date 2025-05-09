@@ -2,10 +2,10 @@ import userService from "../service/userService";
 const helloWorld = (req, res) => {
   return res.render("home.ejs");
 };
-const handleUserPage = async (req, res) => {
-  let userList = await userService.getUserList();
+const handleUserPage = (req, res) => {
+  let userList = userService.getUserList();
 
-  return res.render("user.ejs", { userList });
+  return res.render("user.ejs");
 };
 const handleBook = (req, res) => {
   return res.render("book.ejs");

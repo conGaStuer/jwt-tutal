@@ -1,16 +1,21 @@
-import userService from "../service/userService";
+// Get the client
+import mysql from "mysql2";
+// create the connection to database
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  database: "jwt",
+});
+
+// execute will internally call prepare and query
+
 const helloWorld = (req, res) => {
   return res.render("home.ejs");
 };
-const handleUserPage = async (req, res) => {
-  let userList = await userService.getUserList();
-
-  return res.render("user.ejs", { userList });
+const handleUserPage = (req, res) => {
+  return res.render("user.ejs");
 };
 const handleBook = (req, res) => {
-  return res.render("book.ejs");
-};
-const handleCreateNewBook = (req, res) => {
   let email = req.body.email;
   let password = req.body.password;
   let username = req.body.bookname;
@@ -20,20 +25,24 @@ const handleCreateNewBook = (req, res) => {
     password,
     username,
   ]);
-  return res.send("message");
 };
 const handleCreateNewUser = (req, res) => {
   let email = req.body.email;
   let password = req.body.password;
   let username = req.body.username;
-  // userService.createNewUser(email, password, username);
-  return res.send("successful~~~~");
+
+  connection.query(
+    "INSERT INTO users (email,password,username) values (?,?,?)",
+    [email, password, username]
+  );
+
+  console.log(",,", req.body);
+  return res.send("message");
 };
 module.exports = {
   helloWorld,
   handleUserPage,
   handleBook,
   handleCreateNewUser,
-  handleCreateNewBook,
 };
 //controller chua function

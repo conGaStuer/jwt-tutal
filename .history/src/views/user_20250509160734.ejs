@@ -13,7 +13,7 @@
     <title>Document</title>
   </head>
   <body>
-    <form action="/book/create-book" method="POST">
+    <form action="/user/create-user" method="POST">
       <div class="container">
         <div class="row">
           <div class="mb-3 mt-3 col-6">
@@ -22,31 +22,19 @@
               type="email"
               class="form-control"
               id="email"
-              name="email"
-              required
+              name="emailName"
+              aria-describedby="emailHelp"
             />
           </div>
           <div class="col-6"></div>
           <div class="mb-3 col-6">
             <label for="password" class="form-label">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              name="password"
-              required
-            />
+            <input type="password" class="form-control" id="password" />
           </div>
           <div class="col-6"></div>
           <div class="col-6 pb-3">
-            <label for="bookname" class="form-label">bookname</label>
-            <input
-              type="text"
-              class="form-control"
-              id="bookname"
-              name="bookname"
-              required
-            />
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" />
           </div>
           <div class="col-12">
             <button type="submit" class="btn btn-primary">Submit</button>

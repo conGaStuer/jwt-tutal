@@ -1,11 +1,18 @@
-import userService from "../service/userService";
+// Get the client
+import mysql from "mysql2";
+import bcrypt from "bcryptjs/dist/bcrypt";
+// create the connection to database
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  database: "jwt",
+});
+
 const helloWorld = (req, res) => {
   return res.render("home.ejs");
 };
-const handleUserPage = async (req, res) => {
-  let userList = await userService.getUserList();
-
-  return res.render("user.ejs", { userList });
+const handleUserPage = (req, res) => {
+  return res.render("user.ejs");
 };
 const handleBook = (req, res) => {
   return res.render("book.ejs");
@@ -26,8 +33,19 @@ const handleCreateNewUser = (req, res) => {
   let email = req.body.email;
   let password = req.body.password;
   let username = req.body.username;
-  // userService.createNewUser(email, password, username);
-  return res.send("successful~~~~");
+
+  const salt = bcrypt.genSaltSync(10);
+  const hashPass = bcrypt.hashSync("password", salt);
+
+  const check = bcrypt.compareSync(password, hash);
+  console.log(check);
+  // connection.query(
+  //   "INSERT INTO users (email,password,username) values (?,?,?)",
+  //   [email, password, username]
+  // );
+
+  console.log(",,", req.body);
+  return res.send("message");
 };
 module.exports = {
   helloWorld,
