@@ -1,0 +1,12 @@
+
+equelizerc> [] <unknown>>
+1
+const path = require('path');
+2
+3
+4
+'config': path.resolve('./sr', 'config.json'),
+5573
+module.exports = {
+'migrations-path':
+path.resolve('./server', 'migrations'), 'models-path': path.resolve('./server', 'models'), 'seeders-path': path.resolve('./server', 'seeders')

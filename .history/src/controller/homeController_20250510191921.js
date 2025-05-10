@@ -45,9 +45,8 @@ const getUpdateUser = async (req, res) => {
 const handleUpdateUser = async (req, res) => {
   let email = req.body.email;
   let username = req.body.username;
-  let id = req.body.id;
-  await userService.updateUserInfo(email, username, id);
-  return res.redirect("/user");
+  let id = req.params.id;
+  await userService.updateUserInfo(email, username);
 };
 module.exports = {
   helloWorld,

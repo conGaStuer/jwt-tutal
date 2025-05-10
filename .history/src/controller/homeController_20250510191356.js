@@ -42,13 +42,6 @@ const getUpdateUser = async (req, res) => {
   }
   return res.render("user-update.ejs", { userData });
 };
-const handleUpdateUser = async (req, res) => {
-  let email = req.body.email;
-  let username = req.body.username;
-  let id = req.body.id;
-  await userService.updateUserInfo(email, username, id);
-  return res.redirect("/user");
-};
 module.exports = {
   helloWorld,
   handleUserPage,
@@ -57,6 +50,5 @@ module.exports = {
   handleCreateNewBook,
   handleDeleteUser,
   getUpdateUser,
-  handleUpdateUser,
 };
 //controller chua function

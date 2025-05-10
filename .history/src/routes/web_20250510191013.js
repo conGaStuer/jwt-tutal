@@ -17,7 +17,7 @@ const initWebRoutes = (app) => {
   router.post("/user/create-user", homeController.handleCreateNewUser);
   router.post("/delete-user/:id", homeController.handleDeleteUser);
   router.get("/update-user/:id", homeController.getUpdateUser);
-  router.post("/user/update-user", homeController.handleUpdateUser);
+
   router.post("/book/create-book", homeController.handleCreateNewBook);
   // duong dan goc => mac dinh tu localhost:8386/....
   return app.use("/", router);

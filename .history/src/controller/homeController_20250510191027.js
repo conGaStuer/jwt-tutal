@@ -40,14 +40,7 @@ const getUpdateUser = async (req, res) => {
   if (user && user.length > 0) {
     userData = user[0];
   }
-  return res.render("user-update.ejs", { userData });
-};
-const handleUpdateUser = async (req, res) => {
-  let email = req.body.email;
-  let username = req.body.username;
-  let id = req.body.id;
-  await userService.updateUserInfo(email, username, id);
-  return res.redirect("/user");
+  return res.render("user-update.ejs");
 };
 module.exports = {
   helloWorld,
@@ -57,6 +50,5 @@ module.exports = {
   handleCreateNewBook,
   handleDeleteUser,
   getUpdateUser,
-  handleUpdateUser,
 };
 //controller chua function

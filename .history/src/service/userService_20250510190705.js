@@ -94,28 +94,9 @@ const getUserById = async (id) => {
     console.log(error);
   }
 };
-const updateUserInfo = async (email, username, id) => {
-  const connection = await mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    database: "jwt",
-    Promise: bluebird,
-  });
-  try {
-    const [rows, fields] = await connection.execute(
-      "UPDATE users SET email = ? , username = ?  WHERE id =?",
-      [email, username, id]
-    );
-    return rows;
-    console.log(rows);
-  } catch (error) {
-    console.log(error);
-  }
-};
 module.exports = {
   createNewUser,
   getUserList,
   deleteUSer,
   getUserById,
-  updateUserInfo,
 };
