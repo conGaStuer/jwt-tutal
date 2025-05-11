@@ -82,59 +82,40 @@ const deleteUSer = async (userId) => {
   });
 };
 const getUserById = async (id) => {
-  // const connection = await mysql.createConnection({
-  //   host: "localhost",
-  //   user: "root",
-  //   database: "jwt",
-  //   Promise: bluebird,
-  // });
-  // try {
-  //   const [rows, fields] = await connection.execute(
-  //     "select * FROM user WHERE id =?",
-  //     [id]
-  //   );
-  //   return rows;
-  //   console.log(rows);
-  // } catch (error) {
-  //   console.log(error);
-  // }
-
-  //findAll []
-  //findOne {}
-  let user = await db.User.findOne({
-    where: {
-      id: id,
-    },
+  const connection = await mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    database: "jwt",
+    Promise: bluebird,
   });
-  //convert models to js object
-  return user.get({ plain: true });
+  try {
+    const [rows, fields] = await connection.execute(
+      "select * FROM user WHERE id =?",
+      [id]
+    );
+    return rows;
+    console.log(rows);
+  } catch (error) {
+    console.log(error);
+  }
 };
 const updateUserInfo = async (email, username, id) => {
-  // const connection = await mysql.createConnection({
-  //   host: "localhost",
-  //   user: "root",
-  //   database: "jwt",
-  //   Promise: bluebird,
-  // });
-  // try {
-  //   const [rows, fields] = await connection.execute(
-  //     "UPDATE user SET email = ? , username = ?  WHERE id =?",
-  //     [email, username, id]
-  //   );
-  //   return rows;
-  //   console.log(rows);
-  // } catch (error) {
-  //   console.log(error);
-  // }
-  let user = {};
-  user = await db.User.update(
-    { email: email, username: username },
-    {
-      where: {
-        id: id,
-      },
-    }
-  );
+  const connection = await mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    database: "jwt",
+    Promise: bluebird,
+  });
+  try {
+    const [rows, fields] = await connection.execute(
+      "UPDATE user SET email = ? , username = ?  WHERE id =?",
+      [email, username, id]
+    );
+    return rows;
+    console.log(rows);
+  } catch (error) {
+    console.log(error);
+  }
 };
 module.exports = {
   createNewUser,

@@ -110,31 +110,22 @@ const getUserById = async (id) => {
   return user.get({ plain: true });
 };
 const updateUserInfo = async (email, username, id) => {
-  // const connection = await mysql.createConnection({
-  //   host: "localhost",
-  //   user: "root",
-  //   database: "jwt",
-  //   Promise: bluebird,
-  // });
-  // try {
-  //   const [rows, fields] = await connection.execute(
-  //     "UPDATE user SET email = ? , username = ?  WHERE id =?",
-  //     [email, username, id]
-  //   );
-  //   return rows;
-  //   console.log(rows);
-  // } catch (error) {
-  //   console.log(error);
-  // }
-  let user = {};
-  user = await db.User.update(
-    { email: email, username: username },
-    {
-      where: {
-        id: id,
-      },
-    }
-  );
+  const connection = await mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    database: "jwt",
+    Promise: bluebird,
+  });
+  try {
+    const [rows, fields] = await connection.execute(
+      "UPDATE user SET email = ? , username = ?  WHERE id =?",
+      [email, username, id]
+    );
+    return rows;
+    console.log(rows);
+  } catch (error) {
+    console.log(error);
+  }
 };
 module.exports = {
   createNewUser,
