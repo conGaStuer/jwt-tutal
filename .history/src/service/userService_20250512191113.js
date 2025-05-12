@@ -60,20 +60,18 @@ const getUserList = async () => {
     where: {
       id: 1,
     },
-    attributes: ["id", "username", "email"],
     include: db.Group,
     raw: true,
     nest: true,
   });
   console.log(newUser);
 
-  let r = await db.Role.findAll({
+  let r = await db.Group.findAll({
     include: {
-      model: db.Group, // Assuming you want to include Users related to this Group
+      model: db.User, // Assuming you want to include Users related to this Group
       where: {
         id: 1,
       },
-      attributes: ["name", "description"],
     },
     raw: true,
     nest: true,

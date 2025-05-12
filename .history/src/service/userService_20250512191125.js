@@ -60,7 +60,6 @@ const getUserList = async () => {
     where: {
       id: 1,
     },
-    attributes: ["id", "username", "email"],
     include: db.Group,
     raw: true,
     nest: true,
@@ -73,7 +72,6 @@ const getUserList = async () => {
       where: {
         id: 1,
       },
-      attributes: ["name", "description"],
     },
     raw: true,
     nest: true,

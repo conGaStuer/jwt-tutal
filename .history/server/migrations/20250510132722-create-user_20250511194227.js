@@ -17,17 +17,14 @@ module.exports = {
       username: {
         type: Sequelize.STRING,
       },
-      address: {
+      password: {
         type: Sequelize.STRING,
       },
-      sex: {
+      password: {
         type: Sequelize.STRING,
       },
-      phone: {
+      password: {
         type: Sequelize.STRING,
-      },
-      groupId: {
-        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
